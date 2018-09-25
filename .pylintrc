@@ -1,0 +1,3 @@
+"python.linting.pylintArgs": ["--errors-only"]
+[TYPECHECK]
+ignored-classes=DateTimeField
