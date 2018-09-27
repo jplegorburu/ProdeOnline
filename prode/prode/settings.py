@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
+    'pronosticos.apps.PronosticosConfig',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -138,3 +140,5 @@ LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# REST_FRAMEWORK = {'DEFAULT_PERMISSION_CLASSES':  'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',}
