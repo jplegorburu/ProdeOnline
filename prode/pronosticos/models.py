@@ -17,7 +17,7 @@ class Liga(models.Model):
     )
     name = models.CharField(max_length=250)
     tipo = models.CharField(max_length=10, choices=TIPOS_LIGA, default='temporada')
-    
+    equipos = models.ManyToManyField(Equipo, through='EquipoLiga')
     def __str__(self):
         return self.name
 
@@ -29,7 +29,7 @@ class EquipoLiga(models.Model):
         ordering = ('liga',)
     
     def __str__(self):
-        return 'Equipo: {} Liga: {}'.format(self.equipo, self.liga)
+        return '{} - {}'.format(self.equipo, self.liga)
 
 class Fecha(models.Model):
     name = models.CharField(max_length=25)

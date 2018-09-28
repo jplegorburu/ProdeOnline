@@ -1,0 +1,238 @@
+- model: pronosticos.equipo
+  pk: 1
+  fields:
+    name: Aldosivi
+- model: pronosticos.equipo
+  pk: 2
+  fields:
+    name: Argentinos Jrs.
+- model: pronosticos.equipo
+  pk: 3
+  fields:
+    name: Atletico Tucuman
+- model: pronosticos.equipo
+  pk: 4
+  fields:
+    name: Banfield
+- model: pronosticos.equipo
+  pk: 5
+  fields:
+    name: Belgrano
+- model: pronosticos.equipo
+  pk: 6
+  fields:
+    name: Boca Juniors
+- model: pronosticos.equipo
+  pk: 7
+  fields:
+    name: Colon (SF)
+- model: pronosticos.equipo
+  pk: 8
+  fields:
+    name: Defensa y Justica
+- model: pronosticos.equipo
+  pk: 9
+  fields:
+    name: Estudiantes de La Plata
+- model: pronosticos.equipo
+  pk: 10
+  fields:
+    name: Gimnasia y Esgrima de La Plata
+- model: pronosticos.equipo
+  pk: 11
+  fields:
+    name: Godoy Cruz
+- model: pronosticos.equipo
+  pk: 12
+  fields:
+    name: Huracan
+- model: pronosticos.equipo
+  pk: 13
+  fields:
+    name: Independiente
+- model: pronosticos.equipo
+  pk: 14
+  fields:
+    name: Lanus
+- model: pronosticos.equipo
+  pk: 15
+  fields:
+    name: Newells Old Boys
+- model: pronosticos.equipo
+  pk: 16
+  fields:
+    name: Patronato
+- model: pronosticos.equipo
+  pk: 17
+  fields:
+    name: Racing Club
+- model: pronosticos.equipo
+  pk: 18
+  fields:
+    name: River Plate
+- model: pronosticos.equipo
+  pk: 19
+  fields:
+    name: Rosario Central
+- model: pronosticos.equipo
+  pk: 20
+  fields:
+    name: San Lorenzo
+- model: pronosticos.equipo
+  pk: 21
+  fields:
+    name: San Martin (San Juan)
+- model: pronosticos.equipo
+  pk: 22
+  fields:
+    name: San Martin (Tucuman)
+- model: pronosticos.equipo
+  pk: 23
+  fields:
+    name: Talleres (Cordoba)
+- model: pronosticos.equipo
+  pk: 24
+  fields:
+    name: Tigre
+- model: pronosticos.equipo
+  pk: 25
+  fields:
+    name: Union (Santa Fe)
+- model: pronosticos.equipo
+  pk: 26
+  fields:
+    name: Velez Sarfield
+- model: pronosticos.liga
+  pk: 1
+  fields:
+    name: Superliga Argentina
+- model: pronosticos.equipoliga
+  pk: 1
+  fields:
+    liga: 1
+    equipo: 1
+- model: pronosticos.equipoliga
+  pk: 2
+  fields:
+    liga: 1
+    equipo: 2
+- model: pronosticos.equipoliga
+  pk: 3
+  fields:
+    liga: 1
+    equipo: 3
+- model: pronosticos.equipoliga
+  pk: 4
+  fields:
+    liga: 1
+    equipo: 4
+- model: pronosticos.equipoliga
+  pk: 5
+  fields:
+    liga: 1
+    equipo: 5
+- model: pronosticos.equipoliga
+  pk: 6
+  fields:
+    liga: 1
+    equipo: 6
+- model: pronosticos.equipoliga
+  pk: 7
+  fields:
+    liga: 1
+    equipo: 7
+- model: pronosticos.equipoliga
+  pk: 8
+  fields:
+    liga: 1
+    equipo: 8
+- model: pronosticos.equipoliga
+  pk: 9
+  fields:
+    liga: 1
+    equipo: 9
+- model: pronosticos.equipoliga
+  pk: 10
+  fields:
+    liga: 1
+    equipo: 10
+- model: pronosticos.equipoliga
+  pk: 11
+  fields:
+    liga: 1
+    equipo: 11
+- model: pronosticos.equipoliga
+  pk: 12
+  fields:
+    liga: 1
+    equipo: 12
+- model: pronosticos.equipoliga
+  pk: 13
+  fields:
+    liga: 1
+    equipo: 13
+- model: pronosticos.equipoliga
+  pk: 14
+  fields:
+    liga: 1
+    equipo: 14
+- model: pronosticos.equipoliga
+  pk: 15
+  fields:
+    liga: 1
+    equipo: 15
+- model: pronosticos.equipoliga
+  pk: 16
+  fields:
+    liga: 1
+    equipo: 16
+- model: pronosticos.equipoliga
+  pk: 17
+  fields:
+    liga: 1
+    equipo: 17
+- model: pronosticos.equipoliga
+  pk: 18
+  fields:
+    liga: 1
+    equipo: 18
+- model: pronosticos.equipoliga
+  pk: 19
+  fields:
+    liga: 1
+    equipo: 19
+- model: pronosticos.equipoliga
+  pk: 20  
+  fields:
+    liga: 1
+    equipo: 20
+- model: pronosticos.equipoliga
+  pk: 21  
+  fields:
+    liga: 1
+    equipo: 21
+- model: pronosticos.equipoliga
+  pk: 22
+  fields:
+    liga: 1
+    equipo: 22
+- model: pronosticos.equipoliga
+  pk: 23
+  fields:
+    liga: 1
+    equipo: 23
+- model: pronosticos.equipoliga
+  pk: 24
+  fields:
+    liga: 1
+    equipo: 24
+- model: pronosticos.equipoliga
+  pk: 25
+  fields:
+    liga: 1
+    equipo: 25
+- model: pronosticos.equipoliga
+  pk: 26
+  fields:
+    liga: 1
+    equipo: 26
