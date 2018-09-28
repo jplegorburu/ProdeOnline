@@ -236,3 +236,19 @@
   fields:
     liga: 1
     equipo: 26
+- model: pronosticos.fecha
+  pk: 1
+  fields:
+    name: 1
+- model: pronosticos.partido
+  pk: 1
+  fields:
+    local: 15
+    local_gol: 0
+    visita: 26
+    visita_gol: 2
+    fecha: 1
+    dia: 2018-08-10
+    hora: "19:00:00"
+    liga: 1
+    estado: finalizado

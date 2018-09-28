@@ -56,7 +56,7 @@ class Partido(models.Model):
     local_gol= models.IntegerField()
     visita = models.ForeignKey(Equipo, related_name='equipo_visita', on_delete=models.CASCADE)
     visita_gol= models.IntegerField()
-    fecha = models.DateField()
+    dia = models.DateField()
     hora = models.TimeField(null=True)
     fecha = models.ForeignKey(Fecha, related_name='fecha_partido',  on_delete=models.CASCADE)
     liga =  models.ForeignKey(Liga, related_name='liga_partido', on_delete=models.CASCADE)

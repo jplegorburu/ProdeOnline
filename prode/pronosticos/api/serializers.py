@@ -22,4 +22,7 @@ class LigaEquipoSerializer(serializers.ModelSerializer):
     equipos = EquipoLigaSerializer(source='liga', many=True)
     class Meta:
         model = Liga
-        fields = '__all__'
+        fields = ('id', 'name', 'equipos')
+
+class PartidoSerializer(serializers.ModelSerializer):
+    pass
