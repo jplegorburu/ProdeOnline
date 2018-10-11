@@ -7,5 +7,5 @@ admin.site.register(EquipoLiga)
 admin.site.register(Partido)
 admin.site.register(Pronostico)
 admin.site.register(Fecha)
-
+admin.site.register(FechaLiga)
 

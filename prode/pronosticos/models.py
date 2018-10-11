@@ -10,6 +10,15 @@ class Equipo(models.Model):
     def __str__(self):
         return self.name
 
+class Fecha(models.Model):
+    name = models.CharField(max_length=25)
+    def __str__(self):
+        try: 
+            int(self.name)
+            return "Fecha "+self.name
+        except ValueError:
+            return self.name
+
 class Liga(models.Model):
     TIPOS_LIGA = (
         ('temporada', 'Temporada'),
@@ -18,32 +27,25 @@ class Liga(models.Model):
     name = models.CharField(max_length=250)
     tipo = models.CharField(max_length=10, choices=TIPOS_LIGA, default='temporada')
     equipos = models.ManyToManyField(Equipo, through='EquipoLiga')
+    fechas = models.ManyToManyField(Fecha, through='FechaLiga')
     def __str__(self):
         return self.name
 
 class EquipoLiga(models.Model):
     liga = models.ForeignKey(Liga, related_name='liga', on_delete=models.CASCADE)
     equipo = models.ForeignKey(Equipo, related_name='equipo', on_delete=models.CASCADE)
-    
     class Meta:
         ordering = ('liga',)
-    
     def __str__(self):
         return '{} - {}'.format(self.equipo, self.liga)
 
-class Fecha(models.Model):
-    name = models.CharField(max_length=25)
 
-    def __str__(self):
-        try: 
-            int(self.name)
-            return "Fecha "+self.name
-        except ValueError:
-            return self.name
 
 class FechaLiga(models.Model):
     fecha = models.ForeignKey(Fecha, related_name="fecha_liga", on_delete=models.CASCADE)
     liga = models.ForeignKey(Liga, related_name="liga_fecha", on_delete=models.CASCADE)
+    def __str__(self):
+        return '{} - {}'.format(self.fecha, self.liga)
 
 class Partido(models.Model):
     ESTADO_PARTIDO = (

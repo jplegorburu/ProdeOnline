@@ -25,4 +25,25 @@ class LigaEquipoSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'equipos')
 
 class PartidoSerializer(serializers.ModelSerializer):
+    local = EquipoSerializer(many=False)
+    visita = EquipoSerializer(many=False)
+    class Meta:
+        model = Partido
+        fields = '__all__'
+
+class FechaSerializer(serializers.ModelSerializer):
+    id = serializers.ReadOnlyField(source='fecha.id')
+    name = serializers.ReadOnlyField(source='fecha.name')
+    class Meta:
+        model = FechaLiga
+        fields = ('id', 'name')
+
+class FechaLigaSerializer(serializers.ModelSerializer):
+    fechas = FechaSerializer(source='liga_fecha', many=True)
+    class Meta:
+        model = Liga
+        fields = ('id', 'name', 'fechas')
+
+
+class PronosticoSerializer(serializers.ModelSerializer):
     pass

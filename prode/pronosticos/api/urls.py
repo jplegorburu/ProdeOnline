@@ -15,4 +15,12 @@ urlpatterns = [
     path('liga/',
      views.LigaListView.as_view(),
      name='ligas_list'),
+     
+    path('liga/<lk>/fecha/<fk>/',
+     views.PartidoListView.as_view(),
+     name='partidos_list'),
+
+    path('fechas/<pk>',
+        views.FechasListView.as_view(),
+        name='fechas_list'),
 ]
