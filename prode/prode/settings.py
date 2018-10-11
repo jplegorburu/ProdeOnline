@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'pronosticos.apps.PronosticosConfig',
     'rest_framework',
+    'django_filters',
 ]
 
 MIDDLEWARE = [

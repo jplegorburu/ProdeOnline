@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 from django.urls import reverse
 # Create your models here.
 
@@ -39,8 +40,6 @@ class EquipoLiga(models.Model):
     def __str__(self):
         return '{} - {}'.format(self.equipo, self.liga)
 
-
-
 class FechaLiga(models.Model):
     fecha = models.ForeignKey(Fecha, related_name="fecha_liga", on_delete=models.CASCADE)
     liga = models.ForeignKey(Liga, related_name="liga_fecha", on_delete=models.CASCADE)
@@ -63,6 +62,9 @@ class Partido(models.Model):
     fecha = models.ForeignKey(Fecha, related_name='fecha_partido',  on_delete=models.CASCADE)
     liga =  models.ForeignKey(Liga, related_name='liga_partido', on_delete=models.CASCADE)
     estado = models.CharField(max_length=11, choices=ESTADO_PARTIDO, default='pendiente')
+    
+    def __str__(self):
+        return '{} - {} - {} vs {}'.format(self.liga, self.fecha, self.local, self.visita)
 
 class Pronostico(models.Model):
     user = models.ForeignKey(User, related_name='user_pronostico', on_delete=models.CASCADE)
@@ -70,5 +72,8 @@ class Pronostico(models.Model):
     local_gol = models.IntegerField(default=0)
     visita_gol = models.IntegerField(default=0)
     puntos = models.IntegerField(default=0)
+    
+    def __str__(self):
+        return 'Pronostico - {} - {}'.format(self.user, self.partido)
 
 

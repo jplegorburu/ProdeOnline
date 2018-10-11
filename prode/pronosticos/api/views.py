@@ -1,4 +1,4 @@
-from rest_framework import generics, status
+from rest_framework import generics, status, viewsets
 from rest_framework.views import APIView
 from django.shortcuts import get_object_or_404
 from ..models import Equipo, Liga, EquipoLiga, Partido
@@ -6,19 +6,22 @@ from rest_framework.response import Response
 from .serializers import EquipoSerializer, LigaSerializer, LigaEquipoSerializer, PartidoSerializer, FechaLigaSerializer
 from rest_framework.authentication import BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
+from django_filters.rest_framework import DjangoFilterBackend
 
-
-class EquipoListView(generics.ListAPIView):
+class EquipoViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Equipo.objects.all()
     serializer_class = EquipoSerializer
 
-class LigaListView(generics.ListAPIView):
+class LigaViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Liga.objects.all()
-    serializer_class = LigaSerializer
 
-class LigaDetailView(generics.RetrieveAPIView):
-    queryset = Liga.objects.all()
-    serializer_class = LigaEquipoSerializer
+    def list(self, *args, **kwargs):
+        self.serializer_class = LigaSerializer
+        return viewsets.ModelViewSet.list(self, *args, **kwargs)
+
+    def retrieve(self, *args, **kwargs):
+        self.serializer_class = LigaEquipoSerializer
+        return viewsets.ModelViewSet.retrieve(self, *args, **kwargs)
 
 class PartidoListView(generics.ListAPIView):
     serializer_class = PartidoSerializer
@@ -32,6 +35,12 @@ class FechasListView(generics.RetrieveAPIView):
     queryset = Liga.objects.all()
     serializer_class = FechaLigaSerializer
 
+class PartidoViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Partido.objects.all()
+    serializer_class = PartidoSerializer
+    filter_backends = (DjangoFilterBackend,)
+    filter_fields = ('liga', 'fecha')
+    
 # class CommentPostView(APIView):
 #     authentication_classes = (BasicAuthentication,)    
 #     permission_classes = (IsAuthenticated,)

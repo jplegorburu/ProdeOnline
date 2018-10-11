@@ -1,25 +1,16 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
+from rest_framework import routers
 
-app_name = 'blog'
+app_name = 'api'
+
+router = routers.DefaultRouter()
+router.register('equipos', views.EquipoViewSet)
+router.register('ligas', views.LigaViewSet)
+router.register('partidos', views.PartidoViewSet)
 
 urlpatterns = [
-    path('equipos/',
-         views.EquipoListView.as_view(),
-         name='equipos_list'),
-
-    path('liga/<pk>/',
-         views.LigaDetailView.as_view(),
-         name='ligas_detail'),
-    
-    path('liga/',
-     views.LigaListView.as_view(),
-     name='ligas_list'),
-     
-    path('liga/<lk>/fecha/<fk>/',
-     views.PartidoListView.as_view(),
-     name='partidos_list'),
-
+    path('', include(router.urls)),
     path('fechas/<pk>',
         views.FechasListView.as_view(),
         name='fechas_list'),
