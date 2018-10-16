@@ -8,6 +8,7 @@ router = routers.DefaultRouter()
 router.register('equipos', views.EquipoViewSet)
 router.register('ligas', views.LigaViewSet)
 router.register('partidos', views.PartidoViewSet)
+router.register('pronosticos', views.PronosticoViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

@@ -1,12 +1,13 @@
 from rest_framework import generics, status, viewsets
 from rest_framework.views import APIView
 from django.shortcuts import get_object_or_404
-from ..models import Equipo, Liga, EquipoLiga, Partido
+from ..models import Equipo, Liga, EquipoLiga, Partido, Pronostico
 from rest_framework.response import Response
-from .serializers import EquipoSerializer, LigaSerializer, LigaEquipoSerializer, PartidoSerializer, FechaLigaSerializer
+from .serializers import EquipoSerializer, LigaSerializer, LigaEquipoSerializer, PartidoSerializer, FechaLigaSerializer, PronosticoSerializer
 from rest_framework.authentication import BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.decorators import list_route, detail_route
 
 class EquipoViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Equipo.objects.all()
@@ -22,6 +23,12 @@ class LigaViewSet(viewsets.ReadOnlyModelViewSet):
     def retrieve(self, *args, **kwargs):
         self.serializer_class = LigaEquipoSerializer
         return viewsets.ModelViewSet.retrieve(self, *args, **kwargs)
+
+    @detail_route(methods=['get'])
+    def top_10(self, request *args, **kwargs):
+        liga = self.get_object()
+        pronosticos = Pronostico.objects.all().filter(partido__liga=liga.id, partido__estado='finalizado')
+
 
 class PartidoListView(generics.ListAPIView):
     serializer_class = PartidoSerializer
@@ -40,7 +47,13 @@ class PartidoViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = PartidoSerializer
     filter_backends = (DjangoFilterBackend,)
     filter_fields = ('liga', 'fecha')
-    
+
+class PronosticoViewSet(viewsets.ModelViewSet):
+    queryset = Pronostico.objects.all()
+    serializer_class = PronosticoSerializer
+    filter_backends = (DjangoFilterBackend,)
+    filter_fields = ('user', 'partido__liga', 'partido__fecha')
+
 # class CommentPostView(APIView):
 #     authentication_classes = (BasicAuthentication,)    
 #     permission_classes = (IsAuthenticated,)

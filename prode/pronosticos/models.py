@@ -71,9 +71,28 @@ class Pronostico(models.Model):
     partido = models.ForeignKey(Partido, related_name='partido_pronostico', on_delete=models.CASCADE)
     local_gol = models.IntegerField(default=0)
     visita_gol = models.IntegerField(default=0)
-    puntos = models.IntegerField(default=0)
     
     def __str__(self):
         return 'Pronostico - {} - {}'.format(self.user, self.partido)
+    
+    def puntos(self):
+        puntos = 0
+        if self.acierto_ganador(self.partido) and self.partido.estado == 'finalizado':
+            puntos += 1
+            if self.acierto_resultado(self.partido):
+                puntos += 2
+        return puntos
+    
+    def acierto_ganador(self, partido):
+        if self.local_gol > self.visita_gol and partido.local_gol > partido.visita_gol:
+            return True
+        if self.local_gol < self.visita_gol and partido.local_gol < partido.visita_gol:
+            return True
+        if self.local_gol == self.visita_gol and partido.local_gol == partido.visita_gol:
+            return True
+        return False
 
-
+    def acierto_resultado(self, partido):
+        if self.local_gol == partido.local_gol and self.visita_gol == partido.visita_gol:
+            return True
+        return False

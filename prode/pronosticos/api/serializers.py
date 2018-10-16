@@ -44,6 +44,7 @@ class FechaLigaSerializer(serializers.ModelSerializer):
         model = Liga
         fields = ('id', 'name', 'fechas')
 
-
 class PronosticoSerializer(serializers.ModelSerializer):
-    pass
+    class Meta:
+        model = Pronostico
+        fields = ('id', 'user', 'local_gol', 'visita_gol','partido')
