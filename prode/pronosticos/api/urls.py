@@ -9,6 +9,7 @@ router.register('equipos', views.EquipoViewSet)
 router.register('ligas', views.LigaViewSet)
 router.register('partidos', views.PartidoViewSet)
 router.register('pronosticos', views.PronosticoViewSet)
+router.register('torneos', views.TorneoViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

@@ -48,3 +48,21 @@ class PronosticoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pronostico
         fields = ('id', 'user', 'local_gol', 'visita_gol','partido')
+
+class LigaTorneoSerializer(serializers.HyperlinkedModelSerializer):
+    id = serializers.ReadOnlyField(source='liga.id')
+    name = serializers.ReadOnlyField(source='liga.name')
+    class Meta:
+        model = LigaTorneo
+        fields = ('id', 'name')
+
+class TorneoDetailSerializer(serializers.ModelSerializer):
+    ligas = LigaTorneoSerializer(source='torneo_liga', many=True)
+    class Meta:
+        model = Torneo
+        fields = ('id', 'name', 'admin', 'ligas', 'users')
+
+class TorneoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Torneo
+        fields = ('id', 'name', 'admin')
